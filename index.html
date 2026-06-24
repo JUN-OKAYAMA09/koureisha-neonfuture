@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeonFuture｜高齢者・おひとりさまサポート</title>
+  <meta name="description" content="NeonFutureは、身寄りのない方・おひとりさまの高齢者の身元保証・終活・死後手続きまで、一貫してサポートします。">
+  <style>
+    :root {
+      --primary: #3d6b8e;
+      --primary-l: #5a8aad;
+      --accent: #c8935a;
+      --accent-l: #e0b07a;
+      --dark: #2c2c2c;
+      --text: #444444;
+      --gray: #777777;
+      --bg: #faf8f5;
+      --white: #ffffff;
+      --border: #e8e2d8;
+      --plan1: #3d6b8e;
+      --plan2: #5a8a65;
+      --plan3: #7a6aaa;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', Georgia, serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.85;
+      font-size: 16px;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--primary); letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--accent); }
+    nav ul {
+      display: flex; gap: 28px; list-style: none;
+    }
+    nav a {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.88rem; color: var(--text);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+    .header-cta {
+      background: var(--accent); color: var(--white) !important;
+      padding: 9px 22px; border-radius: 100px;
+      font-weight: 700 !important;
+    }
+    .header-cta:hover { background: var(--accent-l) !important; }
+
+    /* ===== HERO ===== */
+    #hero {
+      background: linear-gradient(160deg, #eef3f8 0%, #f5ede3 100%);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .hero-inner { max-width: 780px; margin: 0 auto; }
+    .hero-label {
+      display: inline-block;
+      background: var(--primary); color: var(--white);
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.15em;
+      padding: 5px 18px; border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    #hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700; color: var(--dark);
+      line-height: 1.5; margin-bottom: 20px;
+    }
+    #hero h1 em {
+      font-style: normal; color: var(--primary);
+      border-bottom: 3px solid var(--accent);
+    }
+    #hero p {
+      font-size: 1.05rem; color: var(--gray);
+      line-height: 2; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-main {
+      background: var(--accent); color: var(--white);
+      padding: 15px 40px; border-radius: 100px;
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn-main:hover { background: var(--accent-l); transform: translateY(-2px); }
+    .btn-sub {
+      border: 2px solid var(--primary); color: var(--primary);
+      padding: 14px 38px; border-radius: 100px;
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn-sub:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
+
+    /* ===== SECTION ===== */
+    section { padding: 88px 32px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-en {
+      font-family: Georgia, serif;
+      font-size: 0.78rem; letter-spacing: 0.25em;
+      color: var(--accent); text-transform: uppercase;
+      display: block; margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      color: var(--dark); font-weight: 700; line-height: 1.5;
+    }
+    .section-head p {
+      margin-top: 14px; font-size: 0.97rem;
+      color: var(--gray); line-height: 2;
+    }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--accent);
+      margin: 16px auto 0;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+    }
+    .about-text h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700; color: var(--dark);
+      line-height: 1.6; margin-bottom: 20px;
+    }
+    .about-text h2 span { color: var(--primary); }
+    .about-text p {
+      font-size: 0.97rem; color: var(--text);
+      line-height: 2; margin-bottom: 14px;
+    }
+    .about-points {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .about-point {
+      background: var(--bg);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+    }
+    .about-point h4 {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 4px;
+    }
+    .about-point p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    /* ===== SERVICES ===== */
+    #services { background: var(--bg); }
+    .service-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    .card-top {
+      padding: 36px 28px 28px;
+      text-align: center;
+    }
+    .card-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+    .plan1 .card-icon { background: #e8f0f7; }
+    .plan2 .card-icon { background: #e8f2ec; }
+    .plan3 .card-icon { background: #ede8f5; }
+    .card-tag {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      padding: 3px 14px; border-radius: 100px;
+      display: inline-block; margin-bottom: 12px;
+    }
+    .plan1 .card-tag { background: #e8f0f7; color: var(--plan1); }
+    .plan2 .card-tag { background: #e8f2ec; color: var(--plan2); }
+    .plan3 .card-tag { background: #ede8f5; color: var(--plan3); }
+    .service-card h3 {
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 6px;
+    }
+    .card-sub {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.82rem; color: var(--gray); line-height: 1.6;
+    }
+    .card-body {
+      padding: 0 28px 32px;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+    .card-body ul {
+      list-style: none; margin-top: 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .card-body li {
+      font-size: 0.9rem; color: var(--text);
+      display: flex; align-items: flex-start; gap: 8px;
+      line-height: 1.6;
+    }
+    .card-body li::before {
+      content: '●';
+      font-size: 0.5rem; flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .plan1 li::before { color: var(--plan1); }
+    .plan2 li::before { color: var(--plan2); }
+    .plan3 li::before { color: var(--plan3); }
+    .card-accent-bar {
+      height: 5px;
+    }
+    .plan1 .card-accent-bar { background: var(--plan1); }
+    .plan2 .card-accent-bar { background: var(--plan2); }
+    .plan3 .card-accent-bar { background: var(--plan3); }
+
+    /* ===== CONCERNS ===== */
+    #concerns { background: var(--white); }
+    .concerns-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .concern-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+    .concern-item .icon {
+      font-size: 1.5rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .concern-item p {
+      font-size: 0.95rem; line-height: 1.8; color: var(--text);
+    }
+
+    /* ===== FLOW ===== */
+    #flow { background: #f0f5f9; }
+    .flow-list {
+      display: flex; gap: 0;
+      counter-reset: flow;
+      flex-wrap: wrap;
+    }
+    .flow-item {
+      flex: 1; min-width: 180px;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .flow-item:not(:last-child)::after {
+      content: '›';
+      position: absolute; right: -8px; top: 22px;
+      font-size: 2rem; color: var(--primary);
+      opacity: 0.4;
+    }
+    .flow-num {
+      width: 52px; height: 52px;
+      background: var(--primary); color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 1.2rem; font-weight: 700;
+      margin: 0 auto 14px;
+    }
+    .flow-item h4 {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 6px;
+    }
+    .flow-item p { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--bg); }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 18px 24px;
+      display: flex; align-items: flex-start; gap: 14px;
+      cursor: pointer;
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 0.97rem; font-weight: 700; color: var(--dark);
+    }
+    .faq-q .q { color: var(--primary); font-size: 1.1rem; flex-shrink: 0; }
+    .faq-a {
+      padding: 0 24px 18px 52px;
+      font-size: 0.93rem; color: var(--gray);
+      line-height: 1.9; display: none;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--primary); text-align: center; }
+    #contact .section-en { color: rgba(255,255,255,0.6); }
+    #contact h2 { color: var(--white); font-size: clamp(1.5rem, 2.5vw, 2.1rem); }
+    #contact .divider { background: var(--accent-l); }
+    #contact > .section-inner > p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem; margin: 20px 0 40px; line-height: 2;
+    }
+    .contact-box {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 44px 40px;
+      max-width: 500px; margin: 0 auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .contact-box h3 {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 20px;
+    }
+    .contact-box .email {
+      display: block;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 8px;
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    }
+    .contact-box .hours {
+      font-size: 0.85rem; color: var(--gray); margin-bottom: 24px;
+    }
+    .contact-box .btn-main { display: inline-block; }
+    .contact-note {
+      margin-top: 16px;
+      font-size: 0.8rem; color: var(--gray);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      padding: 36px 32px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 10px;
+    }
+    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .service-cards { grid-template-columns: 1fr; }
+      .concerns-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">NeonFuture <span>高齢者サポート</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about">私たちについて</a></li>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#flow">ご相談の流れ</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="#contact" class="header-cta">無料相談</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <span class="hero-label">株式会社 NeonFuture</span>
+    <h1>
+      人生の最期まで、<br>
+      <em>安心して過ごしていただきたい。</em>
+    </h1>
+    <p>
+      身寄りのない方・おひとりさまの高齢者を対象に、<br>
+      身元保証・生前準備・死後手続きまで一貫してサポートします。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-main">無料でご相談する</a>
+      <a href="#services" class="btn-sub">サービスを見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONCERNS -->
+<section id="concerns">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-en">Concerns</span>
+      <h2>こんな不安はありませんか？</h2>
+      <div class="divider"></div>
+      <p>多くの高齢者が、こうした不安を抱えながら毎日を過ごしています。</p>
+    </div>
+    <div class="concerns-grid">
+      <div class="concern-item">
+        <span class="icon">🏥</span>
+        <p>入院・施設入所の際に<strong>身元保証人</strong>を頼める人がいない</p>
+      </div>
+      <div class="concern-item">
+        <span class="icon">📋</span>
+        <p>自分が亡くなった後、<strong>手続きや後片付け</strong>を誰がしてくれるのか</p>
+      </div>
+      <div class="concern-item">
+        <span class="icon">👨‍👩‍👧</span>
+        <p>子どもや家族に<strong>迷惑をかけたくない</strong>が、どうすれば良いかわからない</p>
+      </div>
+      <div class="concern-item">
+        <span class="icon">📝</span>
+        <p><strong>遺言書や終活</strong>の準備を始めたいが、何から手をつければ…</p>
+      </div>
+      <div class="concern-item">
+        <span class="icon">🏠</span>
+        <p>自宅や土地があるが<strong>相続のこと</strong>を誰にも相談できていない</p>
+      </div>
+      <div class="concern-item">
+        <span class="icon">🚑</span>
+        <p>急に倒れたとき<strong>緊急連絡先</strong>になってくれる人がいない</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>
+          「おひとりさま」でも、<br>
+          <span>安心して生きていける</span><br>
+          社会をつくりたい。
+        </h2>
+        <p>
+          高齢化が進む日本では、単身で生活する高齢者が急増しています。
+          頼れる家族がいない、遠方にしかいない、迷惑をかけたくない——
+          そんな方々の「もしも」に備えるために、NeonFutureは生まれました。
+        </p>
+        <p>
+          専任スタッフが担当として継続的に関わり、生前の準備から
+          入院・施設入所時の対応、そして死後の手続きまで、
+          一貫してお客様に寄り添います。
+        </p>
+      </div>
+      <div class="about-points">
+        <div class="about-point">
+          <h4>一貫したサポート体制</h4>
+          <p>担当スタッフが生前から死後まで継続して関わります。途中で担当が変わることはありません。</p>
+        </div>
+        <div class="about-point">
+          <h4>専門家との連携</h4>
+          <p>司法書士・行政書士・税理士など各分野の専門家と連携し、複雑な手続きもワンストップで対応します。</p>
+        </div>
+        <div class="about-point">
+          <h4>個別対応</h4>
+          <p>お一人おひとりの状況・ご意向を丁寧にお聞きした上でご提案します。画一的なサービスではありません。</p>
+        </div>
+        <div class="about-point">
+          <h4>審査制による安心の契約</h4>
+          <p>身元保証などは審査の上で契約を結びます。お互いの信頼関係を大切にしています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-en">Service</span>
+      <h2>3つのサポートプラン</h2>
+      <div class="divider"></div>
+      <p>ご状況に合わせて最適なプランをご提案します。単独でも組み合わせでもご利用いただけます。</p>
+    </div>
+    <div class="service-cards">
+
+      <!-- みまもりプラン -->
+      <div class="service-card plan1">
+        <div class="card-accent-bar"></div>
+        <div class="card-top">
+          <div class="card-icon">🤝</div>
+          <span class="card-tag">PLAN 01</span>
+          <h3>みまもりプラン</h3>
+          <p class="card-sub">身元保証・緊急対応・死後事務の<br>一貫サポート</p>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>入院・施設入所時の身元保証人引き受け</li>
+            <li>24時間緊急連絡先の引き受け</li>
+            <li>施設選びから入居手続きへの同行</li>
+            <li>医師からの説明・手術同意への同席</li>
+            <li>ご逝去後の葬儀手配・各種連絡</li>
+            <li>死後事務の代行（行政・金融機関等）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- そなえプラン -->
+      <div class="service-card plan2">
+        <div class="card-accent-bar"></div>
+        <div class="card-top">
+          <div class="card-icon">📖</div>
+          <span class="card-tag">PLAN 02</span>
+          <h3>そなえプラン</h3>
+          <p class="card-sub">エンディングノート・遺言・家族信託など<br>生前準備のサポート</p>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>専任スタッフによるエンディングノート作成支援</li>
+            <li>治療方針・延命意思を含む医療対応版も対応</li>
+            <li>公正証書遺言の作成サポート</li>
+            <li>任意後見・財産管理委任契約のサポート</li>
+            <li>不動産お持ちの方への家族信託のご提案</li>
+            <li>財産目録の整理・大切な方へのメッセージ作成</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- つなぐプラン -->
+      <div class="service-card plan3">
+        <div class="card-accent-bar"></div>
+        <div class="card-top">
+          <div class="card-icon">🕊️</div>
+          <span class="card-tag">PLAN 03</span>
+          <h3>つなぐプラン</h3>
+          <p class="card-sub">葬儀後の死後手続きを一括代行<br>ご遺族の負担を最小化します</p>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>銀行口座の解約・相続手続き代行</li>
+            <li>生命保険・年金の請求・停止手続き</li>
+            <li>電気・ガス・携帯など各種解約手続き</li>
+            <li>行政手続き（住民票・健康保険等）</li>
+            <li>遺品整理・形見分けの調整サポート</li>
+            <li>SNS・サブスクなどデジタル遺品の整理</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-en">Flow</span>
+      <h2>ご相談から契約までの流れ</h2>
+      <div class="divider"></div>
+      <p>まずはお気軽にご相談ください。無理な勧誘は一切行いません。</p>
+    </div>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-num">1</div>
+        <h4>無料相談</h4>
+        <p>お電話・メールにてお気軽にご連絡ください。</p>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">2</div>
+        <h4>ヒアリング</h4>
+        <p>担当スタッフがご自宅や近くの場所でじっくりお話をお聞きします。</p>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">3</div>
+        <h4>プランご提案</h4>
+        <p>ご状況に合わせた最適なプランと費用をご提示します。</p>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">4</div>
+        <h4>審査・契約</h4>
+        <p>審査の上、ご納得いただいてから契約を結びます。</p>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">5</div>
+        <h4>サポート開始</h4>
+        <p>担当スタッフが継続してサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-en">FAQ</span>
+      <h2>よくあるご質問</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <span class="q">Q</span>家族がいても利用できますか？
+        </div>
+        <div class="faq-a">はい、ご利用いただけます。「子どもに迷惑をかけたくない」「遠方の家族の負担を減らしたい」といったご希望の方も多くご利用いただいています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <span class="q">Q</span>身元保証は必ず引き受けてもらえますか？
+        </div>
+        <div class="faq-a">審査の上でのご対応となります。ご健康状態・財産状況・ご意向などをヒアリングし、双方にとって無理のない形でご契約を結びます。審査の結果、お断りする場合もございますことをご了承ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <span class="q">Q</span>エンディングノートとはどんなものですか？
+        </div>
+        <div class="faq-a">財産・医療方針・葬儀の希望・大切な方へのメッセージなどを記録しておくノートです。法的効力はありませんが、もしものときにご意思を尊重した対応をするための重要な資料となります。専任スタッフが8時間かけて丁寧にヒアリングしながら作成をサポートします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <span class="q">Q</span>家族信託はどんな方に向いていますか？
+        </div>
+        <div class="faq-a">自宅や土地・建物などの不動産をお持ちの方に特に有効です。認知症になった場合でも、あらかじめ信頼できる方に財産管理を任せておくことができます。詳しくはご相談の際にご説明します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <span class="q">Q</span>料金はどのくらいかかりますか？
+        </div>
+        <div class="faq-a">ご利用いただくサービスの内容や範囲によって異なります。まずは無料相談にてご状況をお聞きした上で、お見積もりをご提示します。お気軽にお問い合わせください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-en">Contact</span>
+      <h2>まずは、お気軽にご相談ください</h2>
+      <div class="divider"></div>
+    </div>
+    <p style="color:rgba(255,255,255,0.8);text-align:center;font-size:1rem;margin:-20px 0 40px;line-height:2">
+      「まだ元気だから大丈夫」と思っていても、<br>準備は早ければ早いほど、選択肢が広がります。
+    </p>
+    <div class="contact-box">
+      <h3>無料相談受付中（平日 10:00〜17:00）</h3>
+      <a href="mailto:info@neonfuture.world" class="email">info@neonfuture.world</a>
+      <p class="hours">通常2営業日以内にご返信いたします</p>
+      <a href="mailto:info@neonfuture.world" class="btn-main">メールで相談する</a>
+      <p class="contact-note">相談は無料です。無理な勧誘は一切行いません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">株式会社 NeonFuture</div>
+  <p>© 2026 NeonFuture Inc. All rights reserved. | <a href="mailto:info@neonfuture.world" style="color:rgba(255,255,255,0.35)">info@neonfuture.world</a></p>
+</footer>
+
+<script>
+  function toggle(el) { el.parentElement.classList.toggle('open'); }
+</script>
+</body>
+</html>
